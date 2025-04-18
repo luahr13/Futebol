@@ -12,12 +12,5 @@ namespace Futebol.Models
         public string NomeDaComicao { get; set; }
         public int TimeID { get; set; }
         public Time Time { get; set; }
-
-        public class FutebolDBContext : DbContext
-        {
-            public DbSet<ComicaoTecnica> ComicaoTecnica { get; set; }
-
-            public System.Data.Entity.DbSet<Futebol.Models.Time> Times { get; set; }
-        }
     }
 }

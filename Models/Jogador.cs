@@ -15,12 +15,4 @@ namespace Futebol.Models
         public int TimeID { get; set; }
         public Time Time { get; set; }
     }
-    public class FutebolDBContext : DbContext
-    {
-        public DbSet<Jogador> Jogadores { get; set; }
-
-        public System.Data.Entity.DbSet<Futebol.Models.Time> Times { get; set; }
-
-        public System.Data.Entity.DbSet<Futebol.Models.ComicaoTecnica> ComicaoTecnicas { get; set; }
-    }
 }

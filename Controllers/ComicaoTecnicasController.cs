@@ -17,22 +17,27 @@ namespace Futebol.Controllers
         // GET: ComicaoTecnicas
         public ActionResult Index()
         {
-            var comicaoTecnicas = db.ComicaoTecnicas.Include(c => c.Time);
+            var comicaoTecnicas = db.ComicaoTecnica.Include(c => c.Time);
             return View(comicaoTecnicas.ToList());
         }
 
-        // GET: ComicaoTecnicas/Details/5
+        // GET: ComicaoTecnicas/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ComicaoTecnica comicaoTecnica = db.ComicaoTecnicas.Find(id);
+
+            var comicaoTecnica = db.ComicaoTecnica
+                .Include(c => c.Time) // Carrega explicitamente o Time relacionado
+                .FirstOrDefault(c => c.ID == id);
+
             if (comicaoTecnica == null)
             {
                 return HttpNotFound();
             }
+
             return View(comicaoTecnica);
         }
 
@@ -52,7 +57,7 @@ namespace Futebol.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ComicaoTecnicas.Add(comicaoTecnica);
+                db.ComicaoTecnica.Add(comicaoTecnica);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -61,23 +66,28 @@ namespace Futebol.Controllers
             return View(comicaoTecnica);
         }
 
-        // GET: ComicaoTecnicas/Edit/5
+        // GET: ComicaoTecnicas/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ComicaoTecnica comicaoTecnica = db.ComicaoTecnicas.Find(id);
+
+            var comicaoTecnica = db.ComicaoTecnica
+                .Include(c => c.Time) // Carrega explicitamente o Time relacionado
+                .FirstOrDefault(c => c.ID == id);
+
             if (comicaoTecnica == null)
             {
                 return HttpNotFound();
             }
+
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
             return View(comicaoTecnica);
         }
 
-        // POST: ComicaoTecnicas/Edit/5
+        // POST: ComicaoTecnicas/Edit/id
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,28 +104,33 @@ namespace Futebol.Controllers
             return View(comicaoTecnica);
         }
 
-        // GET: ComicaoTecnicas/Delete/5
+        // GET: ComicaoTecnicas/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ComicaoTecnica comicaoTecnica = db.ComicaoTecnicas.Find(id);
+
+            var comicaoTecnica = db.ComicaoTecnica
+                .Include(c => c.Time) // Carrega explicitamente o Time relacionado
+                .FirstOrDefault(c => c.ID == id);
+
             if (comicaoTecnica == null)
             {
                 return HttpNotFound();
             }
+
             return View(comicaoTecnica);
         }
 
-        // POST: ComicaoTecnicas/Delete/5
+        // POST: ComicaoTecnicas/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ComicaoTecnica comicaoTecnica = db.ComicaoTecnicas.Find(id);
-            db.ComicaoTecnicas.Remove(comicaoTecnica);
+            ComicaoTecnica comicaoTecnica = db.ComicaoTecnica.Find(id);
+            db.ComicaoTecnica.Remove(comicaoTecnica);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

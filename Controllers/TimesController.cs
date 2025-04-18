@@ -78,7 +78,7 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nome")] Time time)
+        public ActionResult Edit([Bind(Include = "ID,NomeDoTime")] Time time)
         {
             if (ModelState.IsValid)
             {

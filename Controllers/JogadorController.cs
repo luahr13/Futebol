@@ -22,17 +22,17 @@ namespace Futebol.Controllers
         }
 
         // GET: Jogador/Details/id
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Jogador jogador = db.Jogadores.Find(id);
+            var jogador = db.Jogadores
+                .Include(j => j.Time) // Carrega explicitamente o Time relacionado
+                .FirstOrDefault(j => j.ID == id);
+
             if (jogador == null)
             {
                 return HttpNotFound();
             }
+
             return View(jogador);
         }
 
@@ -92,11 +92,15 @@ namespace Futebol.Controllers
         // GET: Jogador/Delete/id
         public ActionResult Delete(int id)
         {
-            var jogador = db.Jogadores.Find(id);
+            var jogador = db.Jogadores
+                .Include(j => j.Time) // Carrega explicitamente o relacionamento com Time
+                .FirstOrDefault(j => j.ID == id);
+
             if (jogador == null)
             {
                 return HttpNotFound();
             }
+
             return View(jogador);
         }
 

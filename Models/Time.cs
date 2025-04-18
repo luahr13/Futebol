@@ -13,10 +13,5 @@ namespace Futebol.Models
 
         public List<Jogador> Jogadores { get; set; } = new List<Jogador>();
         public List<ComicaoTecnica> ComicaoTecnica { get; set; } = new List<ComicaoTecnica>();
-
-        public class FutebolDBContext : DbContext
-        {
-            public DbSet<Time> Times { get; set; }
-        }
     }
 }

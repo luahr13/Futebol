@@ -130,6 +130,7 @@
     <Compile Include="Controllers\ComicaoTecnicasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogadorController.cs" />
+    <Compile Include="Controllers\PartidasController.cs" />
     <Compile Include="Controllers\TimesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,9 +155,15 @@
     <Compile Include="Migrations\202504180006581_comicao.Designer.cs">
       <DependentUpon>202504180006581_comicao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504180042095_partidasDbContext.cs" />
+    <Compile Include="Migrations\202504180042095_partidasDbContext.Designer.cs">
+      <DependentUpon>202504180042095_partidasDbContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ComicaoTecnica.cs" />
+    <Compile Include="Models\FutebolDBContext.cs" />
     <Compile Include="Models\Jogador.cs" />
+    <Compile Include="Models\Partidas.cs" />
     <Compile Include="Models\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -226,6 +233,11 @@
     <Content Include="Views\ComicaoTecnicas\Details.cshtml" />
     <Content Include="Views\ComicaoTecnicas\Edit.cshtml" />
     <Content Include="Views\ComicaoTecnicas\Index.cshtml" />
+    <Content Include="Views\Partidas\Create.cshtml" />
+    <Content Include="Views\Partidas\Delete.cshtml" />
+    <Content Include="Views\Partidas\Details.cshtml" />
+    <Content Include="Views\Partidas\Edit.cshtml" />
+    <Content Include="Views\Partidas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504180006581_comicao.resx">
       <DependentUpon>202504180006581_comicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504180042095_partidasDbContext.resx">
+      <DependentUpon>202504180042095_partidasDbContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
