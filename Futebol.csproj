@@ -175,6 +175,10 @@
     <Compile Include="Migrations\202504180658571_ComicaoEnumAtributosData.Designer.cs">
       <DependentUpon>202504180658571_ComicaoEnumAtributosData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504181818253_AdicionaEstadioEmPartidas.cs" />
+    <Compile Include="Migrations\202504181818253_AdicionaEstadioEmPartidas.Designer.cs">
+      <DependentUpon>202504181818253_AdicionaEstadioEmPartidas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ComicaoTecnica.cs" />
     <Compile Include="Models\FutebolDBContext.cs" />
@@ -315,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504180658571_ComicaoEnumAtributosData.resx">
       <DependentUpon>202504180658571_ComicaoEnumAtributosData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504181818253_AdicionaEstadioEmPartidas.resx">
+      <DependentUpon>202504181818253_AdicionaEstadioEmPartidas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

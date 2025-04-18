@@ -11,6 +11,7 @@ namespace Futebol.Models
         public int ID { get; set; }
         public int TimeCasaID { get; set; }
         public Time TimeCasa { get; set; }
+        public string Estadio { get; set; } // Estádio da partida
 
         public int TimeVisitanteID { get; set; }
         public Time TimeVisitante { get; set; }

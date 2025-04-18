@@ -47,6 +47,10 @@ namespace Futebol.Controllers
         {
             ViewBag.TimeCasaID = new SelectList(db.Times, "ID", "NomeDoTime");
             ViewBag.TimeVisitanteID = new SelectList(db.Times, "ID", "NomeDoTime");
+            // Obter a lista de estádios únicos cadastrados nos times
+            var estadios = db.Times.Select(t => t.Estadio).Distinct().ToList();
+            ViewBag.Estadios = new SelectList(estadios);
+
             return View();
         }
 
@@ -72,6 +76,9 @@ namespace Futebol.Controllers
             // Recarregar a lista de times para popular os dropdowns na view
             ViewBag.TimeCasaID = new SelectList(db.Times, "ID", "NomeDoTime", partida.TimeCasaID);
             ViewBag.TimeVisitanteID = new SelectList(db.Times, "ID", "NomeDoTime", partida.TimeVisitanteID);
+            // Obter a lista de estádios únicos cadastrados nos times
+            ViewBag.Estadios = new SelectList(db.Times.Select(t => t.Estadio).Distinct().ToList(), partida.Estadio);
+
             return View(partida);
         }
 
@@ -95,6 +102,8 @@ namespace Futebol.Controllers
 
             ViewBag.TimeCasaID = new SelectList(db.Times, "ID", "NomeDoTime", partidas.TimeCasaID);
             ViewBag.TimeVisitanteID = new SelectList(db.Times, "ID", "NomeDoTime", partidas.TimeVisitanteID);
+            // Preencha a lista de estádios com os valores disponíveis
+            ViewBag.Estadios = new SelectList(db.Times.Select(t => t.Estadio).Distinct().ToList(), partidas.Estadio);
             return View(partidas);
         }
 
@@ -103,7 +112,7 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,TimeCasaID,TimeVisitanteID")] Partidas partidas)
+        public ActionResult Edit([Bind(Include = "ID,TimeCasaID,TimeVisitanteID, Estadio")] Partidas partidas)
         {
             if (ModelState.IsValid)
             {
@@ -113,6 +122,8 @@ namespace Futebol.Controllers
             }
             ViewBag.TimeCasaID = new SelectList(db.Times, "ID", "NomeDoTime", partidas.TimeCasaID);
             ViewBag.TimeVisitanteID = new SelectList(db.Times, "ID", "NomeDoTime", partidas.TimeVisitanteID);
+            // Obter a lista de estádios únicos cadastrados nos times
+            ViewBag.Estadios = new SelectList(db.Times.Select(t => t.Estadio).Distinct().ToList(), partidas.Estadio);
             return View(partidas);
         }
 
