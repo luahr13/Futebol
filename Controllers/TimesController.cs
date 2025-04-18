@@ -20,18 +20,23 @@ namespace Futebol.Controllers
             return View(db.Times.ToList());
         }
 
-        // GET: Times/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Time time = db.Times.Find(id);
+
+            var time = db.Times
+                .Include(t => t.Jogadores)          // Carrega a lista de jogadores
+                .Include(t => t.ComicaoTecnica)    // Carrega a comissão técnica
+                .FirstOrDefault(t => t.ID == id); // Busca o time pelo ID
+
             if (time == null)
             {
                 return HttpNotFound();
             }
+
             return View(time);
         }
 
@@ -46,7 +51,7 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeDoTime")] Time time)
+        public ActionResult Create([Bind(Include = "ID,NomeDoTime,Cidade,Estado,AnoFundacao,Estadio,CoresUniforme,CapacidadeEstadio")] Time time)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +83,7 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NomeDoTime")] Time time)
+        public ActionResult Edit([Bind(Include = "ID,NomeDoTime,Cidade,Estado,AnoFundacao,Estadio,CapacidadeEstadio,CoresUniforme")] Time time)
         {
             if (ModelState.IsValid)
             {
