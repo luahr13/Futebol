@@ -163,6 +163,10 @@
     <Compile Include="Migrations\202504180212326_AtributosDeTime.Designer.cs">
       <DependentUpon>202504180212326_AtributosDeTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504180611022_AtributosJogador.cs" />
+    <Compile Include="Migrations\202504180611022_AtributosJogador.Designer.cs">
+      <DependentUpon>202504180611022_AtributosJogador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ComicaoTecnica.cs" />
     <Compile Include="Models\FutebolDBContext.cs" />
@@ -294,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504180212326_AtributosDeTime.resx">
       <DependentUpon>202504180212326_AtributosDeTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504180611022_AtributosJogador.resx">
+      <DependentUpon>202504180611022_AtributosJogador.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

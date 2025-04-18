@@ -41,6 +41,11 @@ namespace Futebol.Controllers
         {
             // Preenche a lista de times para o dropdown
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime");
+            // Preenche as opções do enum Posicao
+            ViewBag.Posicoes = Enum.GetValues(typeof(Posicao)).Cast<Posicao>();
+            // Preenche as opções do enum PeDominante
+            ViewBag.PesDominantes = Enum.GetValues(typeof(PeDominante)).Cast<PeDominante>();
+
             return View();
         }
 
@@ -58,6 +63,9 @@ namespace Futebol.Controllers
 
             // Preenche o dropdown novamente se ocorrer erro de validação
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", jogador.TimeID);
+            ViewBag.Posicoes = Enum.GetValues(typeof(Posicao)).Cast<Posicao>();
+            ViewBag.PesDominantes = Enum.GetValues(typeof(PeDominante)).Cast<PeDominante>();
+
             return View(jogador);
         }
 
@@ -72,6 +80,11 @@ namespace Futebol.Controllers
 
             // Preencher o ViewBag com a lista de times
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", jogador.TimeID);
+            // Preenche as opções do enum Posicao
+            ViewBag.Posicoes = Enum.GetValues(typeof(Posicao)).Cast<Posicao>();
+            // Preenche as opções do enum PeDominante
+            ViewBag.PesDominantes = Enum.GetValues(typeof(PeDominante)).Cast<PeDominante>();
+
             return View(jogador);
         }
 
@@ -86,6 +99,14 @@ namespace Futebol.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            // Preenche o dropdown de times
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", jogador.TimeID);
+            // Preenche as opções do enum Posicao
+            ViewBag.Posicoes = Enum.GetValues(typeof(Posicao)).Cast<Posicao>();
+            // Preenche as opções do enum PeDominante
+            ViewBag.PesDominantes = Enum.GetValues(typeof(PeDominante)).Cast<PeDominante>();
+
             return View(jogador);
         }
 
