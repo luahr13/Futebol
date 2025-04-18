@@ -1,0 +1,34 @@
+﻿@model Futebol.Models.ComicaoTecnica
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ComicaoTecnica</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Time.NomeDoTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time.NomeDoTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeDaComicao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeDaComicao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
