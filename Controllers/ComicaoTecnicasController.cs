@@ -44,7 +44,10 @@ namespace Futebol.Controllers
         // GET: ComicaoTecnicas/Create
         public ActionResult Create()
         {
+            // Preenche as opções dos Times
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime");
+            // Preenche as opções do enum Cargo
+            ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
             return View();
         }
 
@@ -53,7 +56,7 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeDaComicao,TimeID")] ComicaoTecnica comicaoTecnica)
+        public ActionResult Create([Bind(Include = "ID,NomeDaComicao,TimeID,Cargo,DataDeNascimento")] ComicaoTecnica comicaoTecnica)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +66,7 @@ namespace Futebol.Controllers
             }
 
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
+            ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
             return View(comicaoTecnica);
         }
 
@@ -84,6 +88,7 @@ namespace Futebol.Controllers
             }
 
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
+            ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
             return View(comicaoTecnica);
         }
 
@@ -92,7 +97,7 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NomeDaComicao,TimeID")] ComicaoTecnica comicaoTecnica)
+        public ActionResult Edit([Bind(Include = "ID,NomeDaComicao,TimeID,Cargo,DataDeNascimento")] ComicaoTecnica comicaoTecnica)
         {
             if (ModelState.IsValid)
             {
@@ -101,6 +106,7 @@ namespace Futebol.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
+            ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
             return View(comicaoTecnica);
         }
 

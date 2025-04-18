@@ -167,6 +167,14 @@
     <Compile Include="Migrations\202504180611022_AtributosJogador.Designer.cs">
       <DependentUpon>202504180611022_AtributosJogador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504180632140_ComicaoEnumAtributos.cs" />
+    <Compile Include="Migrations\202504180632140_ComicaoEnumAtributos.Designer.cs">
+      <DependentUpon>202504180632140_ComicaoEnumAtributos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504180658571_ComicaoEnumAtributosData.cs" />
+    <Compile Include="Migrations\202504180658571_ComicaoEnumAtributosData.Designer.cs">
+      <DependentUpon>202504180658571_ComicaoEnumAtributosData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ComicaoTecnica.cs" />
     <Compile Include="Models\FutebolDBContext.cs" />
@@ -301,6 +309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504180611022_AtributosJogador.resx">
       <DependentUpon>202504180611022_AtributosJogador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504180632140_ComicaoEnumAtributos.resx">
+      <DependentUpon>202504180632140_ComicaoEnumAtributos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504180658571_ComicaoEnumAtributosData.resx">
+      <DependentUpon>202504180658571_ComicaoEnumAtributosData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
