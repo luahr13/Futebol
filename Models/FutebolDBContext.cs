@@ -20,17 +20,33 @@ namespace Futebol.Models
                 .HasRequired(p => p.TimeCasa)
                 .WithMany()
                 .HasForeignKey(p => p.TimeCasaID)
-                .WillCascadeOnDelete(false); // Sem exclusão em cascata
+                .WillCascadeOnDelete(false);
 
             // Configuração para o relacionamento TimeVisitante
             modelBuilder.Entity<Partidas>()
                 .HasRequired(p => p.TimeVisitante)
                 .WithMany()
                 .HasForeignKey(p => p.TimeVisitanteID)
-                .WillCascadeOnDelete(false); // Sem exclusão em cascata
+                .WillCascadeOnDelete(false);
 
+            // Configuração para o relacionamento TimeID em EstatisticasPartida
+            modelBuilder.Entity<EstatisticasPartida>()
+                .HasRequired(e => e.Time)
+                .WithMany()
+                .HasForeignKey(e => e.TimeID)
+                .WillCascadeOnDelete(false);
+
+            // Configuração para o relacionamento PartidaID em EstatisticasPartida
+            modelBuilder.Entity<EstatisticasPartida>()
+                .HasRequired(e => e.Partida)
+                .WithMany(p => p.Estatisticas)
+                .HasForeignKey(e => e.PartidaID)
+                .WillCascadeOnDelete(false);
+
+            // Chamada ao método base deve vir APÓS todas as configurações
             base.OnModelCreating(modelBuilder);
         }
 
+        public System.Data.Entity.DbSet<Futebol.Models.EstatisticasPartida> EstatisticasPartidas { get; set; }
     }
 }

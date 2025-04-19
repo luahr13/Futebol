@@ -19,16 +19,8 @@ textarea {
     max-width: 280px;
 }
 
-.card {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-.card-header {
-    font-size: 1.25em;
-    font-weight: bold;
-}
-
-.card-footer {
-    background-color: #f8f9fa;
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
 }

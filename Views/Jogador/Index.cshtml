@@ -1,39 +1,45 @@
 ﻿@model IEnumerable<Futebol.Models.Jogador>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
+@{ ViewBag.Title = "Index"; }
+<h2>Listagem de Jogadores</h2>
+<!-- Formulário de busca -->
+@using (Html.BeginForm("Index", "Jogador", FormMethod.Get))
+{
+    <div class="form-group">
+        <label for="searchString">Buscar jogador por nome:</label>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string, new { @class = "form-control", placeholder = "Digite o nome do jogador" })
+        <input type="submit" value="Pesquisar" class="btn btn-primary mt-2" />
+    </div>}
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar Novo Jogador", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Time.NomeDoTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeDoJogador)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
+<!-- Tabela de jogadores -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Time.NomeDoTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().NomeDoJogador)
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>@foreach (var item in Model)
+    {
+        <tr>
+            <td>
             @Html.DisplayFor(modelItem => item.Time.NomeDoTime)
-        </td>
+            </td>
         <td>
             @Html.DisplayFor(modelItem => item.NomeDoJogador)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID })
+            @Html.ActionLink("Detalhes", "Details", new { id = item.ID })
+            @Html.ActionLink("Excluir", "Delete", new { id = item.ID })
         </td>
-    </tr>
-}
-
+        </tr>
+    }
+    </tbody>
 </table>

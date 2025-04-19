@@ -167,5 +167,42 @@ namespace Futebol.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult AddEstatistica(int partidaId)
+        {
+            var partida = db.Partidas.Include(p => p.TimeCasa).Include(p => p.TimeVisitante).FirstOrDefault(p => p.ID == partidaId);
+
+            if (partida == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.PartidaID = partidaId;
+            ViewBag.Times = new SelectList(new[] { partida.TimeCasa, partida.TimeVisitante }, "ID", "NomeDoTime");
+            ViewBag.Jogadores = new SelectList(db.Jogadores.Where(j => j.TimeID == partida.TimeCasaID || j.TimeID == partida.TimeVisitanteID), "ID", "NomeDoJogador");
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddEstatistica(EstatisticasPartida estatistica)
+        {
+            if (ModelState.IsValid)
+            {
+                estatistica.SequenciaGol = db.EstatisticasPartidas.Count(e => e.PartidaID == estatistica.PartidaID) + 1;
+
+                db.EstatisticasPartidas.Add(estatistica);
+                db.SaveChanges();
+
+                return RedirectToAction("Details", new { id = estatistica.PartidaID });
+            }
+
+            var partida = db.Partidas.Include(p => p.TimeCasa).Include(p => p.TimeVisitante).FirstOrDefault(p => p.ID == estatistica.PartidaID);
+            ViewBag.Times = new SelectList(new[] { partida.TimeCasa, partida.TimeVisitante }, "ID", "NomeDoTime");
+            ViewBag.Jogadores = new SelectList(db.Jogadores.Where(j => j.TimeID == partida.TimeCasaID || j.TimeID == partida.TimeVisitanteID), "ID", "NomeDoJogador");
+
+            return View(estatistica);
+        }
     }
 }

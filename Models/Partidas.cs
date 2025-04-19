@@ -15,5 +15,7 @@ namespace Futebol.Models
 
         public int TimeVisitanteID { get; set; }
         public Time TimeVisitante { get; set; }
+
+        public ICollection<EstatisticasPartida> Estatisticas { get; set; } = new List<EstatisticasPartida>();
     }
 }

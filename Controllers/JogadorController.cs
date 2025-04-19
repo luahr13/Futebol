@@ -15,10 +15,18 @@ namespace Futebol.Controllers
         private FutebolDBContext db = new FutebolDBContext();
 
         // GET: Jogador
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var jogadores = db.Jogadores.Include(j => j.Time).ToList();
-            return View(jogadores);
+            ViewBag.CurrentFilter = searchString;
+            var jogadores = db.Jogadores.Include(j => j.Time); // Carrega os jogadores com seu relacionamento Time
+
+            // Se o parâmetro de pesquisa for informado, aplica o filtro
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                jogadores = jogadores.Where(j => j.NomeDoJogador.Contains(searchString));
+            }
+
+            return View(jogadores.ToList()); // Retorna os jogadores (filtrados ou não)
         }
 
         // GET: Jogador/Details/id

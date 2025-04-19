@@ -179,8 +179,13 @@
     <Compile Include="Migrations\202504181818253_AdicionaEstadioEmPartidas.Designer.cs">
       <DependentUpon>202504181818253_AdicionaEstadioEmPartidas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504190111587_EstatisticasPartidaAtualizada.cs" />
+    <Compile Include="Migrations\202504190111587_EstatisticasPartidaAtualizada.Designer.cs">
+      <DependentUpon>202504190111587_EstatisticasPartidaAtualizada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ComicaoTecnica.cs" />
+    <Compile Include="Models\EstatisticasPartida.cs" />
     <Compile Include="Models\FutebolDBContext.cs" />
     <Compile Include="Models\Jogador.cs" />
     <Compile Include="Models\Partidas.cs" />
@@ -204,6 +209,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\imagens\logo.png.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -258,6 +264,7 @@
     <Content Include="Views\Partidas\Details.cshtml" />
     <Content Include="Views\Partidas\Edit.cshtml" />
     <Content Include="Views\Partidas\Index.cshtml" />
+    <Content Include="Views\Partidas\AddEstatistica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504181818253_AdicionaEstadioEmPartidas.resx">
       <DependentUpon>202504181818253_AdicionaEstadioEmPartidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504190111587_EstatisticasPartidaAtualizada.resx">
+      <DependentUpon>202504190111587_EstatisticasPartidaAtualizada.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
