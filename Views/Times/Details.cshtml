@@ -1,66 +1,41 @@
 ﻿@model Futebol.Models.Time
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes do Time";
 }
 
-<h2>Details</h2>
+<h2 class="mb-4">Detalhes do Time</h2>
 
-<div>
-    <h4>Time</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeDoTime)
-        </dt>
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <th class="bg-light">Nome do Time</th>
+            <td>@Model.NomeDoTime</td>
+        </tr>
+        <tr>
+            <th class="bg-light">Cidade</th>
+            <td>@Model.Cidade</td>
+        </tr>
+        <tr>
+            <th class="bg-light">Estado</th>
+            <td>@Model.Estado</td>
+        </tr>
+        <tr>
+            <th class="bg-light">Ano de Fundação</th>
+            <td>@Model.AnoFundacao</td>
+        </tr>
+        <tr>
+            <th class="bg-light">Estádio</th>
+            <td>@Model.Estadio</td>
+        </tr>
+        <tr>
+            <th class="bg-light">Cores do Uniforme</th>
+            <td>@Model.CoresUniforme</td>
+        </tr>
+    </tbody>
+</table>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomeDoTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AnoFundacao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AnoFundacao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estadio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estadio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CoresUniforme)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CoresUniforme)
-        </dd>
-
-    </dl>
+<div class="mt-3">
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Voltar para a Lista", "Index", null, new { @class = "btn btn-secondary" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

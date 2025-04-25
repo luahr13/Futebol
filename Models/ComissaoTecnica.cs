@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Futebol.Models
 {
-    public class ComicaoTecnica
+    public class ComissaoTecnica
     {
         public int ID { get; set; }
         public string NomeDaComicao { get; set; }

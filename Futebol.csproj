@@ -127,7 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ComicaoTecnicasController.cs" />
+    <Compile Include="Controllers\ComissaoTecnicaController.cs" />
     <Compile Include="Controllers\EstatisticasPartidasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogadorController.cs" />
@@ -188,8 +188,16 @@
     <Compile Include="Migrations\202504250417262_PerssonalizacaoFront.Designer.cs">
       <DependentUpon>202504250417262_PerssonalizacaoFront.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202504250445391_AtualizaComissao.cs" />
+    <Compile Include="Migrations\202504250445391_AtualizaComissao.Designer.cs">
+      <DependentUpon>202504250445391_AtualizaComissao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202504250449073_AtualizaComissaoPacks.cs" />
+    <Compile Include="Migrations\202504250449073_AtualizaComissaoPacks.Designer.cs">
+      <DependentUpon>202504250449073_AtualizaComissaoPacks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ComicaoTecnica.cs" />
+    <Compile Include="Models\ComissaoTecnica.cs" />
     <Compile Include="Models\EstatisticasPartida.cs" />
     <Compile Include="Models\FutebolDBContext.cs" />
     <Compile Include="Models\Jogador.cs" />
@@ -262,11 +270,11 @@
     <Content Include="Views\Times\Details.cshtml" />
     <Content Include="Views\Times\Edit.cshtml" />
     <Content Include="Views\Times\Index.cshtml" />
-    <Content Include="Views\ComicaoTecnicas\Create.cshtml" />
-    <Content Include="Views\ComicaoTecnicas\Delete.cshtml" />
-    <Content Include="Views\ComicaoTecnicas\Details.cshtml" />
-    <Content Include="Views\ComicaoTecnicas\Edit.cshtml" />
-    <Content Include="Views\ComicaoTecnicas\Index.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Create.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Delete.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Details.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Edit.cshtml" />
+    <Content Include="Views\ComissaoTecnica\Index.cshtml" />
     <Content Include="Views\Partidas\Create.cshtml" />
     <Content Include="Views\Partidas\Delete.cshtml" />
     <Content Include="Views\Partidas\Details.cshtml" />
@@ -348,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202504250417262_PerssonalizacaoFront.resx">
       <DependentUpon>202504250417262_PerssonalizacaoFront.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504250445391_AtualizaComissao.resx">
+      <DependentUpon>202504250445391_AtualizaComissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202504250449073_AtualizaComissaoPacks.resx">
+      <DependentUpon>202504250449073_AtualizaComissaoPacks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

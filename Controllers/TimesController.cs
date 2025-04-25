@@ -29,7 +29,7 @@ namespace Futebol.Controllers
 
             var time = db.Times
                 .Include(t => t.Jogadores)          // Carrega a lista de jogadores
-                .Include(t => t.ComicaoTecnica)    // Carrega a comissão técnica
+                .Include(t => t.ComissaoTecnica)    // Carrega a comissão técnica
                 .FirstOrDefault(t => t.ID == id); // Busca o time pelo ID
 
             if (time == null)

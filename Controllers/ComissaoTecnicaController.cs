@@ -10,15 +10,15 @@ using Futebol.Models;
 
 namespace Futebol.Controllers
 {
-    public class ComicaoTecnicasController : Controller
+    public class ComissaoTecnicaController : Controller
     {
         private FutebolDBContext db = new FutebolDBContext();
 
         // GET: ComicaoTecnicas
         public ActionResult Index()
         {
-            var comicaoTecnicas = db.ComicaoTecnica.Include(c => c.Time);
-            return View(comicaoTecnicas.ToList());
+            var comissaoTecnicas = db.ComissaoTecnica.Include(c => c.Time);
+            return View(comissaoTecnicas.ToList());
         }
 
         // GET: ComicaoTecnicas/Details/id
@@ -29,16 +29,16 @@ namespace Futebol.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var comicaoTecnica = db.ComicaoTecnica
+            var comissaoTecnica = db.ComissaoTecnica
                 .Include(c => c.Time) // Carrega explicitamente o Time relacionado
                 .FirstOrDefault(c => c.ID == id);
 
-            if (comicaoTecnica == null)
+            if (comissaoTecnica == null)
             {
                 return HttpNotFound();
             }
 
-            return View(comicaoTecnica);
+            return View(comissaoTecnica);
         }
 
         // GET: ComicaoTecnicas/Create
@@ -56,18 +56,18 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NomeDaComicao,TimeID,Cargo,DataDeNascimento")] ComicaoTecnica comicaoTecnica)
+        public ActionResult Create([Bind(Include = "ID,NomeDaComicao,TimeID,Cargo,DataDeNascimento")] ComissaoTecnica comissaoTecnica)
         {
             if (ModelState.IsValid)
             {
-                db.ComicaoTecnica.Add(comicaoTecnica);
+                db.ComissaoTecnica.Add(comissaoTecnica);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comissaoTecnica.TimeID);
             ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
-            return View(comicaoTecnica);
+            return View(comissaoTecnica);
         }
 
         // GET: ComicaoTecnicas/Edit/id
@@ -78,18 +78,18 @@ namespace Futebol.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var comicaoTecnica = db.ComicaoTecnica
+            var comissaoTecnica = db.ComissaoTecnica
                 .Include(c => c.Time) // Carrega explicitamente o Time relacionado
                 .FirstOrDefault(c => c.ID == id);
 
-            if (comicaoTecnica == null)
+            if (comissaoTecnica == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comissaoTecnica.TimeID);
             ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
-            return View(comicaoTecnica);
+            return View(comissaoTecnica);
         }
 
         // POST: ComicaoTecnicas/Edit/id
@@ -97,17 +97,17 @@ namespace Futebol.Controllers
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NomeDaComicao,TimeID,Cargo,DataDeNascimento")] ComicaoTecnica comicaoTecnica)
+        public ActionResult Edit([Bind(Include = "ID,NomeDaComicao,TimeID,Cargo,DataDeNascimento")] ComissaoTecnica comissaoTecnica)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(comicaoTecnica).State = EntityState.Modified;
+                db.Entry(comissaoTecnica).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comicaoTecnica.TimeID);
+            ViewBag.TimeID = new SelectList(db.Times, "ID", "NomeDoTime", comissaoTecnica.TimeID);
             ViewBag.Cargos = Enum.GetValues(typeof(Cargo)).Cast<Cargo>();
-            return View(comicaoTecnica);
+            return View(comissaoTecnica);
         }
 
         // GET: ComicaoTecnicas/Delete/id
@@ -118,16 +118,16 @@ namespace Futebol.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var comicaoTecnica = db.ComicaoTecnica
+            var comissaoTecnica = db.ComissaoTecnica
                 .Include(c => c.Time) // Carrega explicitamente o Time relacionado
                 .FirstOrDefault(c => c.ID == id);
 
-            if (comicaoTecnica == null)
+            if (comissaoTecnica == null)
             {
                 return HttpNotFound();
             }
 
-            return View(comicaoTecnica);
+            return View(comissaoTecnica);
         }
 
         // POST: ComicaoTecnicas/Delete/id
@@ -135,8 +135,8 @@ namespace Futebol.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ComicaoTecnica comicaoTecnica = db.ComicaoTecnica.Find(id);
-            db.ComicaoTecnica.Remove(comicaoTecnica);
+            ComissaoTecnica comissaoTecnica = db.ComissaoTecnica.Find(id);
+            db.ComissaoTecnica.Remove(comissaoTecnica);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

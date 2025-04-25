@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Futebol.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace Futebol.Controllers
 {
     public class HomeController : Controller
     {
+        private FutebolDBContext db = new FutebolDBContext();
         public ActionResult Index()
         {
             return View();

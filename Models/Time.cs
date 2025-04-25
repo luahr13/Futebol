@@ -15,6 +15,6 @@ namespace Futebol.Models
 
 
         public List<Jogador> Jogadores { get; set; } = new List<Jogador>();
-        public List<ComicaoTecnica> ComicaoTecnica { get; set; } = new List<ComicaoTecnica>();
+        public List<ComissaoTecnica> ComissaoTecnica { get; set; } = new List<ComissaoTecnica>();
     }
 }

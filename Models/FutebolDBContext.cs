@@ -10,7 +10,7 @@ namespace Futebol.Models
     {
         public DbSet<Time> Times { get; set; }
         public DbSet<Jogador> Jogadores { get; set; }
-        public DbSet<ComicaoTecnica> ComicaoTecnica { get; set; }
+        public DbSet<ComissaoTecnica> ComissaoTecnica { get; set; }
         public DbSet<Partidas> Partidas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

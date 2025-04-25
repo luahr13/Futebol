@@ -17,8 +17,11 @@ namespace Futebol.Controllers
         // GET: Partidas
         public ActionResult Index()
         {
-            var partidas = db.Partidas.Include(p => p.TimeCasa).Include(p => p.TimeVisitante);
-            return View(partidas.ToList());
+            var partidas = db.Partidas
+                 .Include(p => p.TimeCasa)
+                 .Include(p => p.TimeVisitante)
+                 .ToList();
+            return View(partidas);
         }
 
         // GET: Partidas/Details/id

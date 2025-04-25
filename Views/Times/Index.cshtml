@@ -1,36 +1,29 @@
 ﻿@model IEnumerable<Futebol.Models.Time>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Times";
 }
 
-<h2>Index</h2>
+<h2 class="mb-4">Listagem de Times</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar Novo Time", "Create", null, new { @class = "btn btn-success mb-4" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeDoTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomeDoTime)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomeDoTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm text-center">
+                <div class="card-body">
+                    <h5 class="card-title">@item.NomeDoTime</h5>
+                    <div class="mt-3">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-sm mx-1" })
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.ID }, new { @class = "btn btn-info btn-sm mx-1" })
+                        @Html.ActionLink("Excluir", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-sm mx-1" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
