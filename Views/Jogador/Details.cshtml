@@ -6,80 +6,80 @@
 
 <h2>Detalhes do Jogador</h2>
 
-<div class="card shadow p-4">
-    <h4 class="card-title mb-3">Informações do Jogador</h4>
+<div>
+    <h4>Informações do Jogador</h4>
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.NomeDoJogador)
+        </dd>
 
-    <!-- Dados do jogador com linhas de separação -->
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Nome:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.NomeDoJogador</p>
-        </div>
-    </div>
-    <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDeNascimento)
+        </dt>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Data de Nascimento:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.DataDeNascimento.ToString("dd/MM/yyyy")</p>
-        </div>
-    </div>
-    <hr />
+        <dd>
+            @Html.DisplayFor(model => model.DataDeNascimento)
+        </dd>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Nacionalidade:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.Nacionalidade</p>
-        </div>
-    </div>
-    <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacionalidade)
+        </dt>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Posição:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.Posicao</p>
-        </div>
-    </div>
-    <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Nacionalidade)
+        </dd>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Número da Camisa:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.CamisaNumero</p>
-        </div>
-    </div>
-    <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Posicao)
+        </dt>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Altura:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.Altura</p>
-        </div>
-    </div>
-    <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Posicao)
+        </dd>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Peso:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.Peso</p>
-        </div>
-    </div>
-    <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.CamisaNumero)
+        </dt>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Pé Dominante:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.PeDominante</p>
-        </div>
-    </div>
-    <hr />
+        <dd>
+            @Html.DisplayFor(model => model.CamisaNumero)
+        </dd>
 
-    <div class="row mb-3">
-        <label class="col-sm-3 col-form-label">Time:</label>
-        <div class="col-sm-9">
-            <p class="form-control-plaintext">@Model.Time.NomeDoTime</p>
-        </div>
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Altura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeDominante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeDominante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time.NomeDoTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time.NomeDoTime)
+        </dd>
+
+    </dl>
+
+    </dl>
 </div>
 
 <!-- Botões de navegação -->
