@@ -10,30 +10,29 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeCasa.NomeDoTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeVisitante.NomeDoTime)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeCasa.NomeDoTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeVisitante.NomeDoTime)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.NomeDaPartida)</th>
+            <th>@Html.DisplayNameFor(model => model.TimeCasa.NomeDoTime)</th>
+            <th>@Html.DisplayNameFor(model => model.TimeVisitante.NomeDoTime)</th>
+            <th>@Html.DisplayNameFor(model => model.Estadio)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var partida in Model)
+        {
+            <tr>
+                <td>@partida.NomeDaPartida</td>
+                <td>@partida.TimeCasa.NomeDoTime</td>
+                <td>@partida.TimeVisitante.NomeDoTime</td>
+                <td>@partida.Estadio</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = partida.ID }, new { @class = "btn btn-primary btn-sm" }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = partida.ID }, new { @class = "btn btn-info btn-sm" }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = partida.ID }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

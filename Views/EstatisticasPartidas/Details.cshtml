@@ -1,0 +1,50 @@
+﻿@model Futebol.Models.EstatisticasPartida
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EstatisticasPartida</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Jogador.NomeDoJogador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jogador.NomeDoJogador)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partida.NomeDaPartida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partida.NomeDaPartida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time.NomeDoTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time.NomeDoTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SequenciaGol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SequenciaGol)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

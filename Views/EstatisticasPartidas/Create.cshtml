@@ -1,0 +1,97 @@
+﻿@model Futebol.Models.EstatisticasPartida
+
+@{
+    ViewBag.Title = "Criar Estatística";
+}
+
+<h2 class="mb-4">Registrar Estatística da Partida</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Dados da Estatística</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- Seleção de Partida -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.PartidaID, "Partida", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PartidaID", ViewBag.PartidaID as SelectList, "Selecione uma partida", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PartidaID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Seleção de Time (Carregado dinamicamente via JS) -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeID, "Time", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TimeID", new SelectList(new List<SelectListItem>(), "Value", "Text"), "Selecione um time", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TimeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Seleção de Jogador (Carregado dinamicamente via JS) -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.JogadorID, "Jogador", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("JogadorID", new SelectList(new List<SelectListItem>(), "Value", "Text"), "Selecione um jogador", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.JogadorID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Sequência do Gol -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.SequenciaGol, "Sequência do Gol", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SequenciaGol, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SequenciaGol, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Botão de Envio -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar Gol" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para a Lista", "Index", null, new { @class = "btn btn-secondary" })
+</div>
+
+
+
+@section Scripts {
+    <script>$(document).ready(function () {
+            // Atualizar Time quando Partida for selecionada
+            $("#PartidaID").change(function () {
+                var partidaId = $(this).val();
+                $.getJSON("/EstatisticasPartidas/GetTimesDaPartida", { partidaId: partidaId }, function (data) {
+                    var timeDropdown = $("#TimeID");
+                    timeDropdown.empty();
+                    timeDropdown.append('<option value="">Selecione um time</option>');
+                    $.each(data, function (i, time) {
+                        timeDropdown.append('<option value="' + time.ID + '">' + time.NomeDoTime + '</option>');
+                    });
+                });
+            });
+
+            // Atualizar Jogador quando Time for selecionado
+            $("#TimeID").change(function () {
+                var timeId = $(this).val();
+                $.getJSON("/EstatisticasPartidas/GetJogadoresDoTime", { timeId: timeId }, function (data) {
+                    var jogadorDropdown = $("#JogadorID");
+                    jogadorDropdown.empty();
+                    jogadorDropdown.append('<option value="">Selecione um jogador</option>');
+                    $.each(data, function (i, jogador) {
+                        jogadorDropdown.append('<option value="' + jogador.ID + '">' + jogador.NomeDoJogador + '</option>');
+                    });
+                });
+            });
+        });</script>
+}

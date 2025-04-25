@@ -43,6 +43,18 @@ namespace Futebol.Models
                 .HasForeignKey(e => e.PartidaID)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<EstatisticasPartida>()
+                .HasRequired(e => e.Time)
+                .WithMany()
+                .HasForeignKey(e => e.TimeID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<EstatisticasPartida>()
+                .HasRequired(e => e.Partida)
+                .WithMany(p => p.Estatisticas)
+                .HasForeignKey(e => e.PartidaID)
+                .WillCascadeOnDelete(false);
+
             // Chamada ao método base deve vir APÓS todas as configurações
             base.OnModelCreating(modelBuilder);
         }

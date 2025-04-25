@@ -68,6 +68,10 @@ namespace Futebol.Controllers
 
             if (ModelState.IsValid)
             {
+                // Definir o nome da partida automaticamente
+                int totalPartidas = db.Partidas.Count() + 1;
+                partida.NomeDaPartida = "Jogo " + totalPartidas;
+
                 db.Partidas.Add(partida);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -76,7 +80,6 @@ namespace Futebol.Controllers
             // Recarregar a lista de times para popular os dropdowns na view
             ViewBag.TimeCasaID = new SelectList(db.Times, "ID", "NomeDoTime", partida.TimeCasaID);
             ViewBag.TimeVisitanteID = new SelectList(db.Times, "ID", "NomeDoTime", partida.TimeVisitanteID);
-            // Obter a lista de estádios únicos cadastrados nos times
             ViewBag.Estadios = new SelectList(db.Times.Select(t => t.Estadio).Distinct().ToList(), partida.Estadio);
 
             return View(partida);
